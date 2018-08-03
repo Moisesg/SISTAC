@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Sistac
+        psr4_prefix: Sistac
+        src_path: app

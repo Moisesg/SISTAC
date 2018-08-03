@@ -1,0 +1,171 @@
+ @page { margin: 0in; }
+   body {
+      background-image: url('../../images/brillant.png');
+      background-size: 100%;
+      color: #73879C;
+      font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 1.4; 
+    }
+  .greyHeader{
+  	margin-top: 10px;
+  	background-color: #c4c0bd;
+  	height: 5%;
+  	width: 100%;
+  }
+
+  .bar{
+  	width: 100%;
+  }
+
+  .barone{
+  	position: relative;
+  	background-color: #73808f;
+  	border-color: #73808f;  	
+  	width: 33.3%;
+  	height: 2%;
+  }
+
+  .bartwo{
+  	background-color: #ac152c;
+  	border-color: #ac152c;
+  	position: relative;
+  	width: 33.3%;
+  	height: 2%;
+  	left: 33.3%;
+  	top: -19.9px;
+  }
+
+  .barthree{
+  	background-color: #091c48;
+  	border-color: #091c48;
+  	position: relative;
+  	width: 33.5%;
+  	height: 2%;
+  	left: 66.6%;
+  	top: -39.8px;
+  }
+
+  .banner{
+  	text-align: center;
+  }
+
+  .credential {
+      position: relative;
+      text-align: center;
+
+  }
+
+  #stringfolio {
+      position: absolute;
+      bottom: 539px;
+      left: 314px;
+      color: #fff;
+      text-align: center;
+  }
+
+  #stringvigencia {
+      position: absolute;
+      bottom: 583.5px;
+      left: 305px;
+      color: #fff;
+      text-align: center;
+  }
+
+  #stringnombrevisitante {
+      position: absolute;
+      width: 75px;
+      bottom: 443px;
+      left: 275px;
+      color: #fff;
+      text-align: left;
+  }
+
+  #stringnombrevisitante {
+      position: absolute;
+      width: 75px;
+      bottom: 418px;
+      left: 265px;
+      color: #fff;
+      text-align: left;
+  }
+
+  #stringnoexpediente {
+      position: absolute;
+      width: 100px;
+      bottom: 390px;
+      left: 305px;
+      color: #fff;
+      text-align: left;
+  }
+
+  #stringcticomite {
+      position: absolute;
+      bottom: 430px;
+      right: 245px;
+      color: #fff;
+      text-align: center;
+  }
+
+  .credential img { 
+      width: 75%;
+      height: auto;
+  }
+
+  .info{
+	text-align: center;
+	margin: 0 auto;
+	width: 75%;
+  }
+
+   .barFlag{
+  	width: 100%;
+    height: 1.25%;
+  /*  border: 1px solid red;*/
+   }
+/*
+  .barFlagone{
+  	background-color: #047732;
+  	border-color: #047732;  
+    position: relative;
+  	width: 45%;
+  	height: 5%;
+  }
+
+  .barFlagtwo{
+    background-color: #000;
+    border-color: #000;
+    position: relative;
+    width: 10%;
+    height: 5%;
+    left: 45%;
+    top: -6px;
+  }
+
+  .barFlagthree{
+  	background-color: #c20e2f;
+  	border-color: #c20e2f;
+    position: relative;
+    width: 45%;
+    height: 10%;
+    left: 55%;
+    top: -22px;
+  }
+*/
+  .greyFooter{
+    background-color: #9e9e9e;
+    position: relative;
+    width: 100%;
+    height:42px;
+    top: 45%;
+    text-align: center;
+  }
+
+  .greyFooter p {
+    color: #eee;
+    line-height: 3.5;
+	  text-align:center;
+    vertical-align:middle;
+  }
+
