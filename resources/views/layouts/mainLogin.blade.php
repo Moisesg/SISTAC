@@ -5,7 +5,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="icon" type="image/png" href="{!! URL::asset('images/cpsLogo.png') !!}">      
-      <title>TAC | Iniciar sesión </title>
+      <title>TAC | Iniciar sesión en sistema </title>
       {!!Html::style('vendors/bootstrap/css/bootstrap.min.css') !!}
       {!!Html::style('vendors/font-awesome/css/font-awesome.min.css') !!}
       {!!Html::style('vendors/animate/animate.min.css') !!}
