@@ -187,7 +187,7 @@
             <div class="alert alert-warning" role="alert">
                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                <span class="sr-only">Error:</span>
-               Por razones de seguridad debe cambiar su contraseña. Por favor indique su nueva contraseña en el siguiente formulario.
+               Por razones de seguridad debe cambiar su contraseña. Por favor indique su nueva contraseña en el siguiente formulario, algun cambio
             </div>
                {!! Form::model(Auth::user()->id, ['route' => [ 'dashboard.update', Auth::user()->id, ],'method' => 'PUT' ]) !!}
                     <div class="form-group">
