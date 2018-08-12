@@ -11,16 +11,9 @@
 |
 */
 
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/ 
-
-/* 
-Route::get('/', function(){
-	return View::make('auth.login');
-});
-*/
 
 Route::resource('dashboard', 'dashboardController');
+
+Route::resource('activity', 'activityController');
+
+Route::resource('users','usersController');

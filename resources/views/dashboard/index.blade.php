@@ -1,254 +1,177 @@
+@extends('layouts.main')
 @section('sysName','SISTAC')
 @section('page_heading','Principal')
 @section('section')
-<!-- /.row --> 
-<div class="row">
-   <div class="col-lg-3 col-md-6">
-      <div class="panel panel-default">
-         <div class="panel-heading">
-            <div class="row">
-               <div class="col-xs-3">
-                  <i class="fa fa-cubes fa-5x grey-icon" ></i>
-               </div>
-               <div class="col-xs-9 text-right">
-                  <div class="huge">{{ $countPersons }}</div>
-                  <div>Población</div>
-               </div>
-            </div>
-         </div>
-         <a href="{!! route('population.index') !!}">
-            <div class="panel-footer">
-               <span class="pull-left">Ver detalles</span>
-               <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-               <div class="clearfix"></div>
-            </div>
-         </a>
-      </div>
-   </div>
-   <div class="col-lg-3 col-md-6">
-      <div class="panel panel-default">
-         <div class="panel-heading">
-            <div class="row">
-               <div class="col-xs-3">
-                  <i class="fa fa-envelope fa-5x grey-icon" ></i>
-               </div>
-               <div class="col-xs-9 text-right">
-                  <div class="huge">{{ $countCorrespondence }} </div>
-                  <div>Correspondencia</div>
-               </div>
-            </div>
-         </div>
-         <a href="{!! route('correspondence.index') !!}">
-            <div class="panel-footer">
-               <span class="pull-left">Ver detalles</span>
-               <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-               <div class="clearfix"></div>
-            </div>
-         </a>
-      </div>
-   </div>
-   <div class="col-lg-3 col-md-6">
-      <div class="panel panel-default">
-         <div class="panel-heading">
-            <div class="row">
-               <div class="col-xs-3">
-                  <i class="fa fa fa-handshake-o fa-5x grey-icon" ></i>
-               </div>
-               <div class="col-xs-9 text-right">
-                  <div class="huge">{{ $countVisits }}</div>
-                  <div>Visitas</div>
-               </div>
-            </div>
-         </div>
-         <a href="{!! route('visits.index') !!}">
-            <div class="panel-footer">
-               <span class="pull-left">Ver detalles</span>
-               <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-               <div class="clearfix"></div>
-            </div>
-         </a>
-      </div>
-   </div>
-   <div class="col-lg-3 col-md-6">
-      <div class="panel panel-default">
-         <div class="panel-heading">
-            <div class="row">
-               <div class="col-xs-3">
-                  <i class="fa fa-square-o fa-5x grey-icon" ></i>
-               </div>
-               <div class="col-xs-9 text-right">
-                  <div class="huge">0</div>
-                  <div>undefined!</div>
-               </div>
-            </div>
-         </div>
-         <a href="javascript:void(0);">
-            <div class="panel-footer">
-               <span class="pull-left">Ver detalles</span>
-               <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-               <div class="clearfix"></div>
-            </div>
-         </a>
-      </div>
-   </div>
-</div>
-<div class="row">
-   <div class="col-lg-6">
-      <div class="panel panel-success">
-         <!-- Default panel contents -->
-         <div class="panel-heading">Ultimos registros relacionados con la población</div>
-         <!-- Table -->
-         <table class="table table-hover " >
-            <thead>
-               <tr>
-                  <th>#</th>
-                  <th>No.Expediente </th>
-                  <th>Nombre completo </th>
-               </tr>
-            </thead>
-            <tbody>
-               @foreach($tablePopulation as $person)
-               <tr>
-                  <td>{!! $person->id !!}</td>
-                  <td>{!! $person->noExpediente !!}</td>
-                  <td>{!! $person->apellidoPaterno !!} {!! $person->apellidoMaterno !!} {!! $person->nombreS !!}</td>
-               </tr>
-               @endforeach
-            </tbody>
-         </table>
-      </div>
-   </div>
-   <div class="col-lg-6">
-      <div class="panel panel-success">
-         <!-- Default panel contents -->
-         <div class="panel-heading">Ultimos registros relacionados con correspondencia</div>
-         <!-- Table -->
-         <table class="table table-hover " >
-            <thead>
-               <tr>
-                  <th>Folio</th>
-                  <th>No.Oficio/Doc </th>
-                  <th>Asunto </th>
-                  <th>Nombre PPL </th>
-               </tr>
-            </thead>
-            <tbody>
-               @foreach($tableCorrespondence as $correspondence)
-               <tr>
-                  <td>{!! $correspondence->id !!}</td>
-                  <td>{!! $correspondence->noOficioDoc !!}</td>
-                  <td>{!! $correspondence->asunto !!}</td>
-                  <td>{!! $correspondence->apellidoPaterno !!} {!! $correspondence->apellidoMaterno !!} {!! $correspondence->nombreS !!} </td>
-               </tr>
-               @endforeach
-            </tbody>
-         </table>
-      </div>
-   </div>
-   <div class="col-lg-12">
-      <div class="panel panel-success">
-         <!-- Default panel contents -->
-         <div class="panel-heading">Ultimos registros relacionados con las visitas</div>
-         <!-- Table -->
-         <table class="table table-hover " >
-            <thead>
-               <tr>
-                  <th>#</th>
-                  <th>No.Expediente </th>
-                  <th>Nombre Completo Visitante</th>
-                  <th>Tipo Visita</th>
-                  <th>Parentesco </th>
-               </tr>
-            </thead>
-            <tbody>
-               @foreach($tableVisits as $visit)
-               <tr>
-                  <td>{!! $visit->id !!}</td>
-                  <td>{!! $visit->noExpediente !!}</td>
-                  <td>{!! $visit->nombreVisitante !!}</td>
-                  <td>{!! $visit->parentesco !!}</td>
-                  <td>{!! $visit->tipoVisita !!}</td>
-               </tr>
-               @endforeach
-            </tbody>
-         </table>
-      </div>
-   </div>
-</div>
+<!-- /.row -->          
+  <div id="sectionTables">
+    <div class="alert alert-info" role="alert">
+       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+         <span class="sr-only">Error:</span>
+          A continuacion se muestra la información actualmente registrada en el sistema ...
+        </div>
+     <span class="clearfix"> &nbsp;</span>   
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="taskTableTab">
+        <li role="task" class="active"><a href="#tasksInProcess" aria-controls="tasksInProcess" role="tab" data-toggle="tab">Tareas en Proceso</a></li>
+        <li role="task"><a href="#finishedTasks" aria-controls="finishedTasks" role="tab" data-toggle="tab">Tareas finalizadas</a></li>
+      </ul>
 
-<div class="modal" tabindex="-1" role="dialog" id="modalChangePassword" data-backdrop="static" >
-   <div class="modal-dialog modal-sm" role="document">
-      <div class="modal-content">
-         <div class="modal-header">
-            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Cambio de contraseña</h4>
-         </div>
-         <div class="modal-body">
-            <div class="alert alert-warning" role="alert">
-               <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-               <span class="sr-only">Error:</span>
-               Por razones de seguridad debe cambiar su contraseña. Por favor indique su nueva contraseña en el siguiente formulario, algun cambio
-            </div>
-               {!! Form::model(Auth::user()->id, ['route' => [ 'dashboard.update', Auth::user()->id, ],'method' => 'PUT' ]) !!}
-                    <div class="form-group">
-                      <label for="password">Nueva contraseña</label>
-                      {!!Form::password("password", ["id"=>"password","class"=>"form-control","placeholder"=>"Introduzca contraseña","required"=>"required"] )!!}                       
-                    </div>
-                    <div class="form-group">
-                      <label for="confirmPassword">Confirme Nueva contraseña</label>
-                     {!!Form::password("confirmPassword", ["id"=>"confirmPassword","class"=>"form-control","placeholder"=>"Confirme contraseña","required"=>"required"] )!!}                       
-                    </div>
-                     {!!Form::hidden("primeraVez",0,["id"=>"primeraVez"])!!}            
-                    <div style="text-align:right">
-                        {!!Form::submit("Cambiar contraseña",["class"=>"btn btn-primary "])!!}   
-                    </div>
-               <!-- <span class="clearfix"> &nbsp;</span> -->
-               {!!Form::close()!!}   
-         </div>
-         <div class="modal-footer" style="text-align:left">
-          <!--  <button type="button" class="btn btn-default"  data-dismiss="modal">Cerrar</button>  -->
-         </div>
-      </div>
-   </div>
-</div>
-<!-- /.row -->
-{!!Html::script('vendors/jquery/jquery-1.12.0.min.js')!!}
-{!!Html::script('vendors/bootstrap/js/bootstrap.min.js')!!}
-<!-- -->
-{!!Html::script('vendors/pnotify/pnotify.custom.min.js')!!}    
-<script type="text/javascript">
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="tasksInProcess">
+          <span class="clearfix"> &nbsp;</span>   
+          <div class="row">
+             <div class="col-lg-5">
+                <div class="form-group">
+                   <label class="sr-only" for="txtSearch"></label>
+                   <div class="input-group input-group-sm">
+                      <div class="input-group-addon"><i class="fa fa-search fa-fw"></i></div>
+                      <input type="text" class="form-control col-lg-6" name="txtSearchTask" id="txtSearchTask" placeholder="Iniciar búsqueda" autofocus>
+                   </div>
+                </div>
+             </div>
+             <!--
+             <div class="col-lg-7 text-right">  
+                <i class="fa fa-question-circle fa-3x" data-toggle="popover" style="color:#31708f;"></i>
+             </div>                 
+           -->
+          </div>    
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="table-responsive">
+                <table width="100%" class="table table-hover table-condensed table-bordered" id="tasksInProcessTable"  >
+                   <thead>
+                      <tr>
+                         <th  width="1%">#</th>
+                         <th width="10%">Personal Asignado</th>
+                         <th width="10%">Asignador</th>
+                         <th width="25%">Tarea</th>
+                         <th width="10%">Ticket referencia</th>
+                         <th width="15%">Fecha inico Act.</th>
+                         <th width="5%">% Avance</th>
+                     </tr>
+                   </thead>
+                   <tbody>  
+                    @foreach ($unfinishedActivities as $unfinishedActivity)
+                   <tr>
+                      <td>{!! $unfinishedActivity->id !!}</td>
+                      <td>{!! $unfinishedActivity->personalAsignado !!}</td>
+                      <td>{!! $unfinishedActivity->persAsignador !!} </td>
+                      <td>{!! $unfinishedActivity->tarea !!} </td>
+                      <td>{!! $unfinishedActivity->ticketReferencia !!} </td>
+                      <td>{!! $unfinishedActivity->fechaInicioTarea !!} </td>
+                      <td>{!! $unfinishedActivity->porcentaje !!} </td>
+                   </tr>
+                    @endforeach                                                             
+                   </tbody>
+                </table>
+              </div>
+            </div>             
+          </div>        
+        </div>
+        <div role="tabpanel" class="tab-pane" id="finishedTasks">
+          <span class="clearfix"> &nbsp;</span>   
+          <div class="row">
+             <div class="col-lg-5">
+                <div class="form-group">
+                   <label class="sr-only" for="txtSearch"></label>
+                   <div class="input-group input-group-sm">
+                      <div class="input-group-addon"><i class="fa fa-search fa-fw"></i></div>
+                      <input type="text" class="form-control col-lg-6" name="txtSearchTaskFinished" id="txtSearchTaskFinished" placeholder="Iniciar búsqueda" autofocus>
+                   </div>
+                </div>
+             </div>
+             <!--
+             <div class="col-lg-7 text-right">  
+                <i class="fa fa-question-circle fa-3x" data-toggle="popover" style="color:#31708f;"></i>
+             </div>                 
+           -->
+          </div>            
+          <div class="table-responsive">
+            <table width="100%" class="table table-hover table-condensed" id="tasksFinishedTable"  >
+               <thead>
+                  <tr>
+                     <th  width="1%">#</th>
+                     <th width="15%">Personal Asignado </th>
+                     <th width="15%" >Asignador </th>
+                     <th width="25%">Tarea </th>
+                     <th width="15%">Ticket referencia</th>
+                     <th width="15%">Fecha inici Act.</th>
+                     <th width="20%">Status</th>
+                  </tr>
+               </thead>
 
-   var firstTime = {{ Auth::user()->primeraVez }};
-   //console.log(firstTime);
-   if (firstTime == 1) {
-      $('#modalChangePassword').modal();
-   };
+            </table>
+          </div>              
+        </div>
+      </div>            
+  </div>
+   <!-- /.row -->  
+   {!!Html::script('vendors/jquery/jquery-1.12.3.js')!!}
+   {!!Html::script('vendors/bootstrap/js/bootstrap.min.js')!!}
+   {!!Html::script('vendors/datatables//media/js/jquery.dataTables.js')!!}        
+   {!!Html::script('vendors/datatables//media/js/dataTables.bootstrap.js')!!}    
+   <!-- -->
+   {!!Html::script('vendors/datatables//extensions/Buttons/js/dataTables.buttons.js')!!}
+   {!!Html::script('vendors/datatables//extensions/Buttons/js/buttons.bootstrap.js')!!}
+   {!!Html::script('vendors/datatables/extensions/Buttons/js/complements/jszip.min.js')!!} 
+   {!!Html::script('vendors/datatables/extensions/Buttons/js/complements/pdfmake.min.js')!!}
+   {!!Html::script('vendors/datatables/extensions/Buttons/js/complements/vfs_fonts.js')!!}
+   {!!Html::script('vendors/datatables//extensions/Buttons/js/buttons.html5.js')!!}
+   {!!Html::script('vendors/datatables//extensions/Buttons/js/buttons.print.js')!!}
+   {!!Html::script('vendors/datatables//extensions/Buttons/js/buttons.colVis.js')!!}
 
-   var password, password2;
-   password = document.getElementById('password');
-   password2 = document.getElementById('confirmPassword');
-   password.onchange = password2.onkeyup = passwordMatch;
+   <!-- -->   
+   {!!Html::script('vendors/pnotify/pnotify.custom.min.js')!!}  
+   {!!Html::script('vendors/moment/moment.js')!!}        
+
+   <script type="text/javascript">
    
-   function passwordMatch() {
-       if(password.value !== password2.value)
-           password2.setCustomValidity('Las contraseñas no coinciden.');
-       else
-           password2.setCustomValidity('');
-   }
-
-   PNotify.prototype.options.styling = "bootstrap3";
-  <?php 
-   $updatePassword = Session::get('message');
-   if ($updatePassword == 'updatePassword') {
-     ?>
-    new PNotify({
-     title: 'Notificación',
-     text: 'La contraseña fue cambiada <strong>satisfactoriamente</strong>',
-     type: 'info',
-     width: "390px"
+   $("#blockTicketInput").change(function (e) {
+     e.preventDefault();
+     if ($('#blockTicketInput').is(':checked') == true){
+         $("#ticketReferencia").attr("disabled", true).attr('required',false ); 
+     } else {
+         $("#ticketReferencia").attr("disabled", false).attr('required', true); 
+     }     
    });
-    <?php } ?>
 
-</script>
+    $('[data-toggle="tooltip"]').tooltip();
 
+     var table = $('#tasksInProcessTable').DataTable({
+              "processing": false,
+              /*
+              "aoColumnDefs": [                            
+                 { "bSortable": false, "searchable": false, "targets": 7 },   
+                 { "bSortable": false, "searchable": false, "targets": 8 },   
+                 { "bSortable": false, "searchable": false, "targets": 9 }   
+
+                ],             */
+                "columns": [
+                      {"data": 'id', "name": 'id'},
+                      {"data": 'personalAsignado', "name": 'personalAsignado'},
+                      {"data": 'persAsignador', "name": 'persAsignador'},
+                      {"data": 'tarea', "name": 'tarea'},
+                      {"data": 'ticketReferencia', "name": 'ticketReferencia'},   
+                      {"data": 'fechaInicioTarea', "name": 'fechaInicioTarea'},   
+                      {"data": 'porcentaje', "name": 'porcentaje'}
+                  ],
+                "language": {
+                    "url": "{{ URL::to('/dist/config/Spanish.json') }}"
+                 },        
+                 dom: "<'row'<'col-sm-6'l><'pull-right'B>>" +
+                      "<'row'<'col-sm-12'tr>>" +
+                      "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+                 buttons: {
+                      buttons: [
+                          { extend: 'pdf', text:'<i class="fa fa-print"></i> PDF', className: 'btn btn-primary btn-sm' },
+                          { extend: 'excel', text:'<i class="fa fa-download"></i> Excel', className: 'btn btn-primary btn-sm' }
+                      ]
+                 }                                              
+             });
+
+       $("#txtSearchTask").keyup( function () {
+         table.search($(this).val()).draw();
+       });
+   </script>
 @stop

@@ -6,9 +6,61 @@ use Illuminate\Http\Request;
 
 use Sistac\Http\Requests;
 use Sistac\Http\Controllers\Controller;
+use Sistac\Activity;
+use Sistac\Progress;
+use Datatables;
+use DB;
 
-class DashboardController extends Controller
+class dashboardController extends Controller
 {
+
+    public function getUnfinishedActivities()
+    {
+        $unfinishedActivities =  DB::select("SELECT
+                        activity.id,
+                        users.seudonimo AS personalAsignado,
+                        activity.seudoAsignador AS persAsignador,
+                        activity.tarea,
+                        activity.ticketReferencia,
+                        activity.fechaInicioTarea,
+                        progress.porcentaje
+                    FROM
+                        activity
+                    JOIN progress ON progress.id =(
+                        SELECT
+                            id
+                        FROM
+                            progress
+                        WHERE
+                            progress.idTarea = activity.id
+                        ORDER BY
+                            id
+                        DESC
+                    LIMIT 1
+                    )
+                    JOIN users ON activity.idPersonalAsignado = users.id
+                    WHERE
+                        progress.porcentaje < 100");
+
+        return $unfinishedActivities;                  
+    }
+
+    public function getFinishedActivities()
+    {
+        
+        // $finishedActivities =  DB::select("");
+        // return $finishedActivities;                  
+    }
+
+
+    public function getDateMain()
+    {
+        setlocale(LC_TIME, 'spanish');
+        $fecha = strftime("%A, %d de %B de %Y");        
+        return $fecha;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +68,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view("dashboard.index");        //
+        //
+        $dateMain = $this->getDateMain();
+        $unfinishedActivities = $this->getUnfinishedActivities();
+        // $finishedActivities = $this->getFinishedActivities();
+        return view("dashboard.index",compact('unfinishedActivities','dateMain'));
     }
 
     /**
@@ -46,9 +102,43 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
+    //   $source = Activity::All();
+       //  return Datatables::of($source)
+      //                    ->make(true);
+/*
+        $source =  DB::select("SELECT
+                        activity.id,
+                        users.seudonimo AS personalAsignado,
+                        activity.seudoAsignador AS persAsignador,
+                        activity.tarea,
+                        activity.ticketReferencia,
+                        activity.fechaInicioTarea,
+                        progress.porcentaje
+                    FROM
+                        activity
+                    JOIN progress ON progress.id =(
+                        SELECT
+                            id
+                        FROM
+                            progress
+                        WHERE
+                            progress.idTarea = activity.id
+                        ORDER BY
+                            id
+                        DESC
+                    LIMIT 1
+                    )
+                    JOIN users ON activity.idPersonalAsignado = users.id
+                    WHERE
+                        progress.porcentaje < 100");
+*/
+
+    //    dd($source);
+
+
     }
 
     /**
